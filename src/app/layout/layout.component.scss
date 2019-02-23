@@ -1,0 +1,8 @@
+@import "variables";
+
+:host {
+    .layout {
+        background: $blueBg;
+        min-height: calc(100vh - #{$headerHeight});
+    }
+}
