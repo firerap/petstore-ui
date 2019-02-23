@@ -1,9 +1,12 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+import { IPet, IPetStatus } from '../../models';
 
 @Injectable()
 export class PetService {
-  fetchPets() {
-    return of([]);
+  constructor(private http: HttpClient) { }
+
+  fetchPets(status: IPetStatus) {
+    return this.http.get<IPet[]>(`https://petstore.swagger.io/v2/pet/findByStatus?status=${status}`);
   }
 }

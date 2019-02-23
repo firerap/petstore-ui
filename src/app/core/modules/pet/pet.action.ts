@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 import { type } from '../../helpers';
-import { IPet } from '../../models';
+import { IPet, IPetStatus } from '../../models';
 import { PetState } from './pet.state';
 
 export namespace PetActions {
@@ -28,9 +28,10 @@ export namespace PetActions {
 
   export class FetchAction implements Action {
     type = ActionTypes.FETCH;
-    payload: string = null;
-
-    constructor() { }
+    /**
+     * @param payload pet status
+     */
+    constructor(public payload: IPetStatus = IPetStatus.PENDING) { }
   }
 
   export class GetOneAction implements Action {

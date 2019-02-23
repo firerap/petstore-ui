@@ -1,49 +1,94 @@
 <div class="container">
     <section class="dashboard">
-        <div class="head">
+        <div class="head"
+             *ngIf="!isLoading">
             <div class="title">
                 <h1>Pets</h1>
-                <span>1 192 Total</span>
+                <span>{{pets.length}} Total</span>
             </div>
             <div class="button-wrapper">
-                <button type="button">
+                <button type="button"
+                        mat-button>
                     <span class="icon">+</span>
                     <span>Add Pet</span>
                 </button>
             </div>
         </div>
-        <table>
+
+        <div class="mat-loader-wrapper loader-absolute loader-center"
+             *ngIf="isLoading">
+            <mat-spinner [diameter]="60"
+                         [strokeWidth]="6"></mat-spinner>
+            <div class="loader-description">Loading pets...</div>
+        </div>
+
+        <mat-table [dataSource]="dataSource"
+                   matSort>
+
+            <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+                <mat-header-cell *matHeaderCellDef
+                                 mat-sort-header> Name </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container matColumnDef="category">
+                <mat-header-cell *matHeaderCellDef> Category </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.category ?element.category.name : ''}} </mat-cell>
+            </ng-container>
+
+            <!-- Status Column -->
+            <ng-container matColumnDef="status">
+                <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.status}} </mat-cell>
+            </ng-container>
+
+
+            <!-- Id Column -->
+            <ng-container matColumnDef="id">
+                <mat-header-cell *matHeaderCellDef
+                                 mat-sort-header> No. </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+            </ng-container>
+
+            <!-- Controls Column -->
+            <ng-container matColumnDef="controls">
+                <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                    <a href="#"
+                       class="link">Manage</a>
+                </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+        <!-- <table>
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Model</th>
-                    <th>Something</th>
-                    <th>Bla</th>
-                    <th></th>
-                </tr>
+                    <th>Id</mat-header-cell>
+                    <th>Name</mat-header-cell>
+                    <th>Category</mat-header-cell>
+                    <th>Status</mat-header-cell>
+                    <th></mat-header-cell>
+                </mat-header-row>
             </thead>
             <tbody>
-                <tr>
-                    <td>Bob</td>
-                    <td>Tesla model S</td>
-                    <td>OLOLO</td>
-                    <td>Alb</td>
+                <tr *ngFor="let pet of pets; trackBy: trackByFn;">
+                    <td>{{pet.id}}</mat-cell>
+                    <td>{{pet.name}}</mat-cell>
+                    <td>{{pet.category ? pet.category.name: ''}}</mat-cell>
+                    <td>{{pet.status}}</mat-cell>
                     <td>
                         <a href="#"
                            class="link">Manage</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Bob</td>
-                    <td>Tesla model S</td>
-                    <td>OLOLO</td>
-                    <td>Alb</td>
-                    <td>
-                        <a href="#"
-                           class="link">Manage</a>
-                    </td>
-                </tr>
+                    </mat-cell>
+                </mat-header-row>
             </tbody>
-        </table>
+        </table> -->
     </section>
 </div>

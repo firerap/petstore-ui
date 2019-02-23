@@ -4,6 +4,8 @@
 :host {
     .dashboard {
         padding-top: 62px;
+        padding-bottom: 80px;
+        min-height: calc(100vh - #{$headerHeight});
     }
 
     .head {
@@ -12,11 +14,60 @@
         justify-content: space-between;
     }
 
+    .mat-table {
+        margin-top: 33px;
+        background: none;
+        box-shadow: none;
+
+        .mat-column-status {
+            text-transform: capitalize;
+        }
+
+        mat-header-row,
+        mat-row {
+            border-color: rgba(46, 91, 255, 0.08);
+            min-height: auto;
+        }
+
+        mat-header-row {
+            border: none;
+
+            mat-header-cell {
+                text-align: left;
+                font-weight: 500;
+                font-size: 12px;
+                color: $gray;
+                letter-spacing: 1.12px;
+            }
+        }
+
+        mat-row {
+            border-left: 1px solid rgba(46, 91, 255, 0.08);
+            border-right: 1px solid rgba(46, 91, 255, 0.08);
+            background: #FFFFFF;
+            margin-top: 10px;
+            padding: 25px 20px;
+
+            mat-cell {
+                padding: 0;
+                color: $black;
+                letter-spacing: 0;
+                line-height: 22px;
+            }
+        }
+
+        @include mobile {
+
+            .mat-column-id,
+            .mat-column-category {
+                display: none;
+            }
+        }
+    }
+
     table {
         margin-top: 33px;
         width: 100%;
-        border-collapse: separate;
-        border-spacing: 0 10px;
 
         th {
             font-weight: 400;
@@ -25,7 +76,7 @@
             font-size: 12px;
             color: $gray;
             letter-spacing: 1.12px;
-            padding-left: 20px;
+            // padding-left: 20px;
         }
 
         tbody {

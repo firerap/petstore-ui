@@ -15,11 +15,11 @@ export class PetEffects {
       .pipe(
         ofType(PetActions.ActionTypes.FETCH),
         switchMap((action: PetActions.FetchAction) => {
-          return this.petService.fetchPets()
+          return this.petService.fetchPets(action.payload)
             .pipe(
-              map(pets =>
-                new PetActions.ChangedAction({ pets }),
-              ),
+              map(pets => {
+                return new PetActions.ChangedAction({ pets });
+              }),
               catchError(err => of(new PetActions.ApiErrorAction(err))),
             );
         }));

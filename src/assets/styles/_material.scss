@@ -1,11 +1,11 @@
-@import '~@angular/material/theming';
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 // Define a custom typography config that overrides the font-family as well as the
 // `headlines` and `body-1` levels.
-$custom-typography: mat-typography-config($font-family: 'Rubik-Regular, Helvetica Neue, Helvetica, Arial, sans-serif',
-$headline: mat-typography-level(32px, 48px, 600),
-$body-1: mat-typography-level(16px, 24px, 500));
+// $custom-typography: mat-typography-config($font-family: 'Rubik-Regular, Helvetica Neue, Helvetica, Arial, sans-serif',
+// $headline: mat-typography-level(32px, 48px, 600),
+// $body-1: mat-typography-level(16px, 24px, 500));
 
 
-@include mat-base-typography($custom-typography);
-@include mat-core($custom-typography);
+// @include mat-base-typography($custom-typography);
+// @include mat-core($custom-typography);
