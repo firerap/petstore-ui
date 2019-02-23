@@ -1,44 +1,46 @@
 import { Action } from '@ngrx/store';
 import { type } from '../../helpers';
-import { IPet, IPetStatus } from '../../models';
-import { PetState } from './pet.state';
+import { IUser } from '../../models';
+import { UserState } from './user.state';
 
-export namespace PetActions {
-  const CATEGORY = 'Pet';
+export namespace UserActions {
+  const CATEGORY = 'User';
 
-  export interface IPetActions {
-    FETCH: string;
+  export interface IUserActions {
+    GET_CURRENT: string;
     GET_ONE: string;
     CREATE: string;
+    LOGIN: string;
+    LOGOUT: string;
     CHANGE: string;
     CHANGED: string;
     DELETE: string;
     API_ERROR: string;
   }
 
-  export const ActionTypes: IPetActions = {
-    FETCH: type(`${CATEGORY} Fetch`),
+  export const ActionTypes: IUserActions = {
+    GET_CURRENT: type(`${CATEGORY} Get current`),
     GET_ONE: type(`${CATEGORY} Get one`),
     CREATE: type(`${CATEGORY} Create`),
+    LOGIN: type(`${CATEGORY} Login`),
+    LOGOUT: type(`${CATEGORY} Logout`),
     CHANGE: type(`${CATEGORY} Change`),
     CHANGED: type(`${CATEGORY} Changed`),
     DELETE: type(`${CATEGORY} Delete`),
     API_ERROR: type(`${CATEGORY} Api error`),
   };
 
-  export class FetchAction implements Action {
-    type = ActionTypes.FETCH;
-    /**
-     * @param payload pet status
-     */
-    constructor(public payload: IPetStatus = IPetStatus.PENDING) { }
+  export class GetCurrentAction implements Action {
+    type = ActionTypes.GET_CURRENT;
+    payload: string = null;
+    constructor() { }
   }
 
   export class GetOneAction implements Action {
     type = ActionTypes.GET_ONE;
 
     /**
-     * @param payload pet.id
+     * @param payload user.id
      */
     constructor(public payload: number) { }
   }
@@ -47,38 +49,54 @@ export namespace PetActions {
     type = ActionTypes.CREATE;
 
     /**
-     * @param payload pet object
+     * @param payload user object
      */
-    constructor(public payload: IPet) { }
+    constructor(public payload: Partial<IUser>) { }
+  }
+
+  export class LoginAction implements Action {
+    type = ActionTypes.LOGIN;
+
+    /**
+     * @param payload user object
+     */
+    constructor(public payload: Partial<IUser>) { }
+  }
+
+  export class LogoutAction implements Action {
+    type = ActionTypes.LOGOUT;
+    payload: string = null;
+
+    constructor() { }
   }
 
   export class ChangeAction implements Action {
     type = ActionTypes.CHANGE;
 
     /**
-     * @param payload pet object
+     * @param payload user object
      */
-    constructor(public payload: IPet) { }
+    constructor(public payload: IUser) { }
   }
 
   /**
-   * Pets has changed; register changes in AppStore
+   * Users has changed; register changes in AppStore
    * Not intended to be used directly.
    */
   export class ChangedAction implements Action {
     type = ActionTypes.CHANGED;
 
     /**
-     * @param payload Changes to Pets
+     * @param payload Changes to Users
      */
-    constructor(public payload: PetState.IState) { }
+    constructor(public payload: UserState.IState) { }
   }
 
   export class DeleteAction implements Action {
     type = ActionTypes.DELETE;
 
     /**
-     * @param payload pet.id
+     * @param payload user.id
      */
     constructor(public payload: number) { }
   }
@@ -89,13 +107,14 @@ export namespace PetActions {
     /**
      * @param payload error
      */
-    constructor(public payload: PetState.IErrorState) { }
+    constructor(public payload: UserState.IErrorState) { }
   }
 
   export type Actions =
-    | FetchAction
+    | GetCurrentAction
     | GetOneAction
     | CreateAction
+    | LoginAction
     | ChangeAction
     | ChangedAction
     | DeleteAction
