@@ -1,8 +1,10 @@
 @import "external";
 @import "material";
 
+@import "variables";
+@import "mixins";
 @import "grid";
 
-@import "./primitives/input";
+@import "./primitives/index";
 
 @import "global";

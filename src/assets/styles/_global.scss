@@ -1,4 +1,8 @@
 html,
 body {
-    font-family: 'Rubik-Medium', 'Helvetica Neue', Helvetica, 'Arial', sans-serif;
+    font-family: $fontBase;
+}
+
+* {
+    box-sizing: border-box;
 }

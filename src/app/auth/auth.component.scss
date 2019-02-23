@@ -1,0 +1,93 @@
+@import "../../assets/styles/variables";
+@import "../../assets/styles/mixins";
+
+:host {
+
+    .sign-page {
+        min-height: 100vh;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        margin-top: 37px;
+
+        @include mobile {
+            margin-left: 20px;
+        }
+
+        .logo-title {
+            margin-left: 6px;
+            font-weight: 500;
+            font-size: 19px;
+            color: $black;
+            letter-spacing: -0.47px;
+        }
+    }
+
+    .title {
+        font-size: 34px;
+        font-weight: 200;
+        color: $black;
+        letter-spacing: 0;
+        line-height: 32px;
+    }
+
+    .subtitle {
+        font-size: 15px;
+        color: $black3;
+        letter-spacing: 0;
+        line-height: 22px;
+        margin-top: 10px;
+    }
+
+    .sign-form {
+        max-width: 323px;
+        width: 100%;
+        margin-top: 190px;
+
+
+        @include tablet {
+            margin: 190px auto 0;
+        }
+
+        @include mobile {
+            margin: 50px auto 0;
+        }
+    }
+
+    .inputs-container {
+        margin-top: 25px;
+    }
+
+    .input-wrapper {
+        margin-top: 25px;
+    }
+
+    .button-wrapper {
+        margin-top: 25px;
+    }
+
+    .bg-image {
+        position: absolute;
+        top: 0;
+        background: url('/assets/images/bg-image.jpg') no-repeat center;
+        background-size: cover;
+        width: 50%;
+        height: 100%;
+        right: 0;
+
+        @include tablet {
+            display: none;
+        }
+
+        @include mobile {
+            display: none;
+        }
+    }
+}
+
+// @include mobile {
+
+// }
+// }
