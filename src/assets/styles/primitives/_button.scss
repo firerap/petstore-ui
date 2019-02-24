@@ -17,13 +17,17 @@
         align-items: center;
         cursor: pointer;
 
+        &:disabled {
+            background: $gray;
+        }
+
 
         .icon {
             font-size: 16px;
             margin-right: 5px;
         }
 
-        &:hover {
+        &:hover:not(:disabled) {
             background: $blue-hover;
         }
 
@@ -43,7 +47,7 @@
         &.btn--danger {
             background: $red;
 
-            &:hover {
+            &:hover:not(:disabled) {
                 background: $red-hover;
             }
         }

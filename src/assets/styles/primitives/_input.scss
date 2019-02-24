@@ -1,5 +1,13 @@
 .input-wrapper {
 
+    &--invalid {
+        .input-labels {
+            .placeholder {
+                color: $red;
+            }
+        }
+    }
+
     input {
         background: rgba($blueLight, .2);
         border: 1px solid $blueLight;
@@ -36,6 +44,14 @@
             font-size: 12px;
             letter-spacing: 1.12px;
             line-height: 14px;
+        }
+    }
+
+    .input-errors-wrapper {
+        p {
+            margin: 2px 0;
+            font-size: 10px;
+            color: $red;
         }
     }
 

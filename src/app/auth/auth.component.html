@@ -8,30 +8,43 @@
                     <span class="logo-title">petstore</span>
                 </div>
                 <form class="sign-form"
+                      [formGroup]="form"
                       (ngSubmit)="onSubmit();">
-                    <div class="title">Sign in to Petstore</div>
+                    <div class="title">Sign up to Petstore</div>
                     <div class="subtitle">Please enter your credentials to proceed.</div>
 
                     <div class="inputs-container">
-                        <div class="input-wrapper">
+                        <div class="input-wrapper"
+                             [class.input-wrapper--invalid]="form.get('email').invalid">
                             <div class="input-labels">
                                 <span class="placeholder">EMAIL ADDRESS</span>
                             </div>
                             <input type="email"
-                                   value="test@test.test">
+                                   formControlName="email">
+                            <div class="input-errors-wrapper"
+                                 *ngIf="form.get('email').invalid">
+                                <p *ngIf="form.get('email').getError('required')">This field is required</p>
+                                <p *ngIf="form.get('email').getError('email')">Email format is not correct</p>
+                            </div>
                         </div>
-                        <div class="input-wrapper">
+                        <div class="input-wrapper"
+                             [class.input-wrapper--invalid]="form.get('password').invalid">
                             <div class="input-labels">
                                 <span class="placeholder">PASSWORD</span>
                             </div>
                             <input type="password"
-                                   value="test">
+                                   formControlName="password">
+                            <div class="input-errors-wrapper"
+                                 *ngIf="form.get('password').invalid">
+                                <p *ngIf="form.get('password').getError('required')">This field is required</p>
+                            </div>
                         </div>
                         <div class="button-wrapper">
                             <button type="submit"
                                     [class.btn--loading]="isLoading"
+                                    [disabled]="form.invalid"
                                     mat-button>
-                                <span>Sign in</span>
+                                <span>Sign up</span>
                                 <mat-spinner [diameter]="30"
                                              [strokeWidth]="3"></mat-spinner>
                             </button>
