@@ -133,7 +133,7 @@
     .link {
         font-weight: 500;
         font-size: 15px;
-        color: $blue;
+        color: $red;
         letter-spacing: 0;
         text-align: center;
         line-height: 21px;
@@ -141,11 +141,11 @@
         border-bottom: 1px solid transparent;
 
         &:hover {
-            border-bottom: 1px solid $blue;
+            border-bottom: 1px solid $red;
         }
 
         &:visited {
-            color: $blue;
+            color: $red;
         }
     }
 }

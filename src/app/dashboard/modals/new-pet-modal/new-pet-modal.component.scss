@@ -1,0 +1,28 @@
+@import "variables";
+@import "mixins";
+
+.pet-modal {
+    width: 400px;
+
+    .button-wrapper,
+    .input-wrapper,
+    .select-wrapper {
+        margin-top: 20px;
+    }
+
+    .title {
+        font-size: 34px;
+        font-weight: 200;
+        color: $black;
+        letter-spacing: 0;
+        line-height: 32px;
+    }
+
+    .subtitle {
+        font-size: 15px;
+        color: $black3;
+        letter-spacing: 0;
+        line-height: 22px;
+        margin-top: 10px;
+    }
+}

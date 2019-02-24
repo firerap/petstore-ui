@@ -9,3 +9,9 @@
 
 // @include mat-base-typography($custom-typography);
 // @include mat-core($custom-typography);
+
+.cdk-overlay-pane {
+    @include mobile {
+        max-width: 100% !important;
+    }
+}

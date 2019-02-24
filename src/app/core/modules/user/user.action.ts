@@ -51,7 +51,7 @@ export namespace UserActions {
     /**
      * @param payload user object
      */
-    constructor(public payload: Partial<IUser>) { }
+    constructor(public payload: IUser) { }
   }
 
   export class LoginAction implements Action {
@@ -60,7 +60,7 @@ export namespace UserActions {
     /**
      * @param payload user object
      */
-    constructor(public payload: Partial<IUser>) { }
+    constructor(public payload: IUser) { }
   }
 
   export class LogoutAction implements Action {

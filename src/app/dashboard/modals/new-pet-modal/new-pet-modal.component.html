@@ -1,0 +1,26 @@
+<mat-dialog-content class="pet-modal">
+    <form [formGroup]="form"
+          (ngSubmit)="addPet()">
+        <div class="title">Add new Pet</div>
+        <div class="subtitle">Please enter pet data to proceed.</div>
+        <div class="inputs-container">
+            <div class="input-wrapper">
+                <div class="input-labels">
+                    <span class="placeholder">NAME</span>
+                </div>
+                <input type="text"
+                       required
+                       formControlName="name">
+            </div>
+            <div class="button-wrapper">
+                <button type="submit"
+                        [class.btn--loading]="isLoading"
+                        mat-button>
+                    <span>Add</span>
+                    <mat-spinner [diameter]="30"
+                                 [strokeWidth]="3"></mat-spinner>
+                </button>
+            </div>
+        </div>
+    </form>
+</mat-dialog-content>

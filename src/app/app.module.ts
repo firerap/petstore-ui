@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core';
+import { DASHBOARD_MODALS } from './dashboard/modals';
 import { LayoutComponent } from './layout/layout.component';
 import { SharedModule } from './shared/shared.module';
 
@@ -12,6 +13,7 @@ import { SharedModule } from './shared/shared.module';
   declarations: [
     AppComponent,
     LayoutComponent,
+    ...DASHBOARD_MODALS,
   ],
   imports: [
     SharedModule,
@@ -21,6 +23,9 @@ import { SharedModule } from './shared/shared.module';
     CoreModule.forRoot([]),
   ],
   providers: [],
+  entryComponents: [
+    ...DASHBOARD_MODALS,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

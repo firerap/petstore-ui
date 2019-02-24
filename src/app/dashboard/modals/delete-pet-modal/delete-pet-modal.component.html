@@ -1,0 +1,17 @@
+<mat-dialog-content class="pet-modal">
+    <div class="title">Delete <u>{{data.pet.name}}</u></div>
+    <div class="subtitle">Are you sure you want to remove this pet?</div>
+    <div class="inputs-container">
+        <div class="button-wrapper">
+            <button type="button"
+                    (click)="deletePet()"
+                    class="btn--danger"
+                    [class.btn--loading]="isLoading"
+                    mat-button>
+                <span>Delete</span>
+                <mat-spinner [diameter]="30"
+                             [strokeWidth]="3"></mat-spinner>
+            </button>
+        </div>
+    </div>
+</mat-dialog-content>

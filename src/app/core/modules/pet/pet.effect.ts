@@ -25,6 +25,49 @@ export class PetEffects {
         }));
 
   @Effect()
+  addPet$: Observable<Action> =
+    this.actions$
+      .pipe(
+        ofType(PetActions.ActionTypes.CREATE),
+        withLatestFrom(this.store),
+        switchMap(([action, state]: [PetActions.CreateAction, IAppState]) => {
+          return this.petService.addPet(action.payload)
+            .pipe(
+              map(pet => {
+                return new PetActions.ChangedAction({
+                  pets: [
+                    pet,
+                    ...state.pet.pets,
+                  ]
+                });
+              }),
+              catchError(err => of(new PetActions.ApiErrorAction(err))),
+            );
+        }));
+
+  @Effect()
+  deletePet$: Observable<Action> =
+    this.actions$
+      .pipe(
+        ofType(PetActions.ActionTypes.DELETE),
+        withLatestFrom(this.store),
+        switchMap(([action, state]: [PetActions.DeleteAction, IAppState]) => {
+          return this.petService.deletePet(action.payload)
+            .pipe(
+              map(_ => {
+                const petIdx = state.pet.pets.findIndex(p => p.id === action.payload);
+                let newState = [...state.pet.pets];
+                newState.splice(petIdx, 1);
+
+                return new PetActions.ChangedAction({
+                  pets: newState,
+                });
+              }),
+              catchError(err => of(new PetActions.ApiErrorAction(err))),
+            );
+        }));
+
+  @Effect()
   apiError$ =
     this.actions$
       .pipe(

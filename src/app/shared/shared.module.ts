@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MatButtonModule, MatFormFieldModule, MatInputModule, MatProgressSpinnerModule, MatTableModule } from '@angular/material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatProgressSpinnerModule, MatTableModule } from '@angular/material';
 import { HeaderComponent } from './header/header.component';
 
 const MATERIAL_MODULES = [
@@ -9,6 +10,7 @@ const MATERIAL_MODULES = [
   MatButtonModule,
   MatTableModule,
   MatProgressSpinnerModule,
+  MatDialogModule,
 ];
 
 const COMPONENTS = [
@@ -21,9 +23,13 @@ const COMPONENTS = [
   ],
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     ...MATERIAL_MODULES,
   ],
   exports: [
+    FormsModule,
+    ReactiveFormsModule,
     ...MATERIAL_MODULES,
     ...COMPONENTS,
   ]

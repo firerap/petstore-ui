@@ -40,6 +40,14 @@
             stroke: $white;
         }
 
+        &.btn--danger {
+            background: $red;
+
+            &:hover {
+                background: $red-hover;
+            }
+        }
+
         &.btn--loading {
             .mat-button-wrapper {
                 span {

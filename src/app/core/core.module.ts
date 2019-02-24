@@ -3,7 +3,7 @@ import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { throwIfAlreadyLoaded } from './helpers';
-import { AppReducer, MODULES_EFFECTS, MODULES_PROVIDERS } from './modules';
+import { AppReducer, MODULES_EFFECTS } from './modules';
 
 @NgModule({
   declarations: [],
@@ -18,7 +18,6 @@ export class CoreModule {
     return {
       ngModule: CoreModule,
       providers: [
-        ...MODULES_PROVIDERS,
         ...configuredProviders
       ],
     };

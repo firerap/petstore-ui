@@ -33,7 +33,7 @@ export class AuthComponent extends BaseComponent implements OnInit {
       this.router.navigate(['/dashboard']);
     });
 
-    const user: Partial<IUser> = {
+    const user: IUser = {
       username: 'dvlasenko96',
       email: 'dvlasenko96@gmail.com',
       password: 'qwerty123',

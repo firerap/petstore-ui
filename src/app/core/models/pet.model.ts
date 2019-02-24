@@ -10,9 +10,9 @@ interface IPetCategory {
 }
 
 export interface IPet {
-  id: number;
-  name: string;
-  photoUrls: string[];
-  status: IPetStatus;
-  category: IPetCategory;
+  id?: number;
+  name?: string;
+  photoUrls?: string[];
+  status?: IPetStatus;
+  category?: IPetCategory;
 }

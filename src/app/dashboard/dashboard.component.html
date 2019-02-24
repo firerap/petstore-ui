@@ -8,7 +8,8 @@
             </div>
             <div class="button-wrapper">
                 <button type="button"
-                        mat-button>
+                        mat-button
+                        (click)="handleAddPet()">
                     <span class="icon">+</span>
                     <span>Add Pet</span>
                 </button>
@@ -60,7 +61,8 @@
                 <mat-header-cell *matHeaderCellDef></mat-header-cell>
                 <mat-cell *matCellDef="let element">
                     <a href="#"
-                       class="link">Manage</a>
+                       (click)="handleDeletePet(element, $event)"
+                       class="link">Delete</a>
                 </mat-cell>
             </ng-container>
 
