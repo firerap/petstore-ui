@@ -27,7 +27,7 @@ export class NewPetModalComponent extends BaseComponent {
     this.initForm();
   }
 
-  public addPet(name: string) {
+  public addPet() {
     if (this.form.invalid) {
       return false;
     }
